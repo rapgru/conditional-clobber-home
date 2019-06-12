@@ -1,0 +1,7 @@
+os: linux
+
+deploy:
+  - provider: surge
+    project: ./web
+    domain: https://condc.surge.sh
+    skip_cleanup: true
