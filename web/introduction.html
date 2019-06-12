@@ -16,9 +16,10 @@
     background-color: #424242;
     color: #ffff;
     width: 100vw;
+    height: 100vh;
 
   }
-  .tutorial {
+  .content {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
@@ -38,10 +39,14 @@
     -ms-flex-align: center;
     align-items: center;
 
-    height: 80vh;
+    height: 90%;
     width: inherit;
+    position: relative;
+    margin: auto;
 
   }
+
+
 
   .heading {
       -webkit-order: 0;
@@ -119,30 +124,202 @@
     cursor: pointer;
   }
 
+  .picture {
+          object-fit: contain;
+          width: auto;
+          height: 100%;
+          align-items: center;
+          -webkit-order: 0;
+          -ms-flex-order: 0;
+          order: 0;
+          -webkit-flex: 0 1 auto;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          -webkit-align-self: auto;
+          -ms-flex-item-align: auto;
+          align-self: auto;
+          margin-bottom: 30px;
+
+          border: 2px solid white
+        }
+
+
+
+.content {
+  position: relative;
+  margin: auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.mySlides {
+  height: inherit;
+  width: inherit;
+
+    text-align:center;
+
+
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+*/
   </style>
 
-  <title>Document</title>
+  <title>Conditional Clobber</title>
 </head>
 <div id="main" class="main">
-    <img class="logo" src="img/brain.svg" alt="" width="60">
+
+   <img class="logo" src="img/brain.svg" alt="" width="60">
   <div class="heading">
   <h1 class="mainHeading">Conditional Clobber</h1>
   </div>
 
-  <div id="content">
 
+  <div id="content" class="content">
 
-  </div>
+      <div class="mySlides fade">
+          <img class="picture" src="img/introduction/index.PNG" alt="" width="100%">
+        </div>
+      
+      <div class="mySlides fade">
+          <img class="picture" src="img/introduction/travel1.PNG" alt="" width="100%">
+      </div>
+      
+      <div class="mySlides fade">
+          <img class="picture" src="img/introduction/travel2.PNG" alt="" width="100%">
+      </div>
 
+      <div class="mySlides fade">
+          <img class="picture" src="img/introduction/travel3.PNG" alt="" width="100%">
+      </div>
 
-  <div class="footer">
-      <a href="https://www.condc-test.surge.sh" class="install">Install</a>
+      <div class="mySlides fade">
+          <img class="picture" src="img/introduction/travel4.PNG" alt="" width="100%">
+      </div>
+
+      <div class="mySlides fade">
+          <img class="picture" src="img/introduction/travel_result.PNG" alt="" width="100%">
+      </div>
+      
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      
+      </div>
+
+  <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+      <span class="dot" onclick="currentSlide(4)"></span> 
+      <span class="dot" onclick="currentSlide(5)"></span> 
+
     </div>
-  
 
+ <div class="footer">
+      <a href="https://www.condc-test.surge.sh" class="install">Install</a>
 </div>
 
 </div>
+
+<script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    </script>
 
 </body>
 </html>
