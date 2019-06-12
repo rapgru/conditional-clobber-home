@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+  <style media="screen">
+
+  body {
+    font-family: 'Montserrat';
+    margin: 0;
+    padding: 0;
+    background-color: #424242;
+    color: #ffff;
+    width: 100vw;
+
+  }
+
+    .invisible {
+      display: none;
+    }
+    .error {
+      display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-flex-wrap: nowrap;
+          -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+          align-content: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .tutorial {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-flex-wrap: nowrap;
+          -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-align-content: stretch;
+          -ms-flex-line-pack: stretch;
+          align-content: stretch;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+
+          height: 80vh;
+          width: inherit;
+
+        }
+
+        .heading {
+            -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 0 1 auto;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+            margin-bottom: 20px;
+            width: inherit;
+
+        }
+
+        .mobile {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-flex-wrap: nowrap;
+          -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+          -webkit-justify-content: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          -webkit-align-content: center;
+          -ms-flex-line-pack: center;
+          align-content: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          height: 100vh;
+          width: 100vw;
+        }
+
+        .mainHeading {
+          text-align: center;
+          border-bottom: 1px solid white;
+          margin-block-start: 0px;
+        }
+
+
+        .mainDescription {
+          text-align: center;
+          font-size: 15px;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+
+        .gifs {
+          object-fit: contain;
+          width: auto;
+          height: 100%;
+          align-items: center;
+          -webkit-order: 0;
+          -ms-flex-order: 0;
+          order: 0;
+          -webkit-flex: 0 1 auto;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          -webkit-align-self: auto;
+          -ms-flex-item-align: auto;
+          align-self: auto;
+          margin-bottom: 30px;
+        }
+
+        .logo
+        {
+          -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 0 1 auto;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+        }
+
+        .footer {
+           
+           text-align: center;
+      }
+
+      .install
+      {
+        background-color: #4286f4;
+        border: none;
+        color: white;
+        padding: 5px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom:10px;
+        cursor: pointer;
+      }
+
+  </style>
+
+  <script>
+    var isMobile = {
+      Android: function () {
+          return navigator.userAgent.match(/Android/i);
+      },
+      BlackBerry: function () {
+          return navigator.userAgent.match(/BlackBerry/i);
+      },
+      iOS: function () {
+          return navigator.userAgent.match(/iPhone|iPod|iPad/i);
+      },
+      Opera: function () {
+          return navigator.userAgent.match(/Opera Mini/i);
+      },
+      Windows: function () {
+          return navigator.userAgent.match(/IEMobile/i);
+      },
+      any: function () {
+          return ((isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()));
+      }
+  };
+
+  function detectDevice() {
+      if (isMobile.any()) {
+        document.getElementById('desktop').classList.add('invisible');
+        document.getElementById('mobile').classList.add('mobile');
+
+        if (isMobile.iOS()) {
+          document.getElementById('ios').classList.add('tutorial');
+          document.getElementById('android').classList.add('invisible');
+
+        }
+        else {
+          document.getElementById('android').classList.add('tutorial');
+          document.getElementById('ios').classList.add('invisible');
+
+        }
+
+      }
+      else {
+        document.getElementById('mobile').classList.add('invisible');
+        document.getElementById('desktop').classList.add('error');
+      }
+
+
+};
+  </script>
+
+  <title>Document</title>
+</head>
+<body onload="detectDevice()">
+
+<div id="desktop">
+  <img class="logo" style="margin-bottom: 30px;" src="img/brain.svg" alt="" width="60">
+  <div class="heading">
+    <h1 class="mainHeading">Conditional Clobber</h1>
+    <p class="mainDescription" style="font-size: 18px;">Did you ever take a look out of the window, judging wheter you should wear long or short trousers and just did not come to a descision? <br>With Conditional Clobber, you will never experience this again.</p>
+    
+    <p style="margin-top: 30px; text-align: center; font-size: 16px;">To install Conditional Clobber visit this page with a mobile device!</p>
+  </div>
+</div>
+
+<div id="mobile">
+  <img class="logo" src="img/brain.svg" alt="" width="60">
+  <div class="heading">
+    <h1 class="mainHeading">Conditional Clobber</h1>
+    <p class="mainDescription">Did you ever take a look out of the window, judging wheter you should wear long or short trousers and just did not come to a descision? With Conditional Clobber, you will never experience this again.</p>
+  </div>
+
+  <div id="ios">
+    <img class="gifs" src="img/ios.gif" alt="">
+  </div>
+
+
+  <div id="android">
+      <img class="gifs" src="img/android.gif" alt="">
+  </div>
+
+  <div class="footer">
+      <a href="https://condc-test.surge.sh" class="install">Install</a>
+  </div>
+</div>
+
+</body>
+</html>
