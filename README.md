@@ -1,3 +1,3 @@
 # conditional-clobber-home
 Homepage of conditional clobber.
-To Download visit condc.surge.sh
+To download visit condc.surge.sh and follow the instructions carefully.
